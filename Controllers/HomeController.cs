@@ -21,7 +21,7 @@ public class HomeController : Controller
             age = 24,
             gender = "Male",
             fee = 35000,
-            Name = "Hitesh",
+            Name = "Hitesh Mishra",
         };
         return View(student);
     }
