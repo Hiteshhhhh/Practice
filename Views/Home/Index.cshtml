@@ -1,0 +1,57 @@
+﻿@model First_Project.Models.Student
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+    List<string> course = new List<string>();
+    course.Add("MCA");
+    course.Add("BCA");
+    course.Add("B.tech");
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-sm-12 col-md-6">
+            @using (Html.BeginForm("ShowData", "Home"))
+            {
+                <div>
+                    @Html.Label("nm", "Enter your name", new { @class = "form-label" })
+                </div>
+                <div>
+                    @Html.TextBox("nm", "", new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("fn", "Enter your Father name", new { @class = "form-label" })
+                </div>
+                <div>
+                    @Html.TextBox("fn", "", new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("pass", "Enter your password", new { @class = "form-label" })
+                </div>
+                <div>
+                    @Html.Password("pass", "", new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("repass", "Confirm Password", new { @class = "form-label" })
+                </div>
+                <div>
+                    @Html.TextBox("repass", "", new { @class = "form-control" })
+                </div>
+                <div>
+                    @Html.Label("gen", "Select Gender", new { @class = "form-label" })
+                </div>
+                <div>
+                    @Html.RadioButton("gen", "Male", true, new { id = "male" })Male
+                    @Html.RadioButton("gen", "FeMale", false, new { id = "female" })FeMale
+                    @Html.RadioButton("gen", "other", false, new { id = "other" })other
+                </div>
+                <div>
+                    @Html.Label("course", "Select Course", new { @class = "form-label" })
+                </div>
+                <div>
+                    @Html.DropDownList("course",new SelectList(course),"--Select Course--")
+                </div>
+            }
+        </div>
+    </div>
+</div>

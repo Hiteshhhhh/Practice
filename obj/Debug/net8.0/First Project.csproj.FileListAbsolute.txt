@@ -1,0 +1,30 @@
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\appsettings.Development.json
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\appsettings.json
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\First Project.staticwebassets.runtime.json
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\First Project.exe
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\First Project.deps.json
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\First Project.runtimeconfig.json
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\First Project.dll
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\First Project.pdb
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.AssemblyInfoInputs.cache
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.AssemblyInfo.cs
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.csproj.CoreCompileInputs.cache
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.MvcApplicationPartsAssemblyInfo.cache
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.RazorAssemblyInfo.cache
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.RazorAssemblyInfo.cs
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets.build.json
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets.development.json
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets\msbuild.First Project.Microsoft.AspNetCore.StaticWebAssets.props
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets\msbuild.build.First Project.props
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.First Project.props
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.First Project.props
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets.pack.json
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\scopedcss\bundle\First Project.styles.css
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\scopedcss\projectbundle\First Project.bundle.scp.css
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.dll
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\refint\First Project.dll
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.pdb
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.genruntimeconfig.cache
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\ref\First Project.dll
