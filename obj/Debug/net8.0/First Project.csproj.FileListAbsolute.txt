@@ -15,11 +15,6 @@ D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.RazorAssembly
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.RazorAssemblyInfo.cs
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets.build.json
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets.development.json
-D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets\msbuild.First Project.Microsoft.AspNetCore.StaticWebAssets.props
-D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets\msbuild.build.First Project.props
-D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.First Project.props
-D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.First Project.props
-D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets.pack.json
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\scopedcss\bundle\First Project.styles.css
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\scopedcss\projectbundle\First Project.bundle.scp.css
@@ -28,3 +23,16 @@ D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\refint\First Project.dll
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.pdb
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.genruntimeconfig.cache
 D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\ref\First Project.dll
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.csproj.AssemblyReference.cache
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\rpswa.dswa.cache.json
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Project.sourcelink.json
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\First Project.staticwebassets.endpoints.json
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\MyLearning\Net MVC\First Project\bin\Debug\net8.0\Npgsql.dll
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\rjimswa.dswa.cache.json
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets.build.json.cache
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+D:\MyLearning\Net MVC\First Project\obj\Debug\net8.0\First Pr.4BA53948.Up2Date

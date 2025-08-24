@@ -1,0 +1,52 @@
+@* filepath: Views/Product/Edit.cshtml *@
+@model ProductModel
+@using Models
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <h4 class="mb-0"><i class="fas fa-edit me-2"></i>Edit Product</h4>
+            </div>
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    <input asp-for="c_id" type="hidden">
+
+                    <div class="mb-3">
+                        <label asp-for="c_name" class="form-label">Product Name</label>
+                        <input asp-for="c_name" class="form-control" placeholder="Enter product name">
+                        <span asp-validation-for="c_name" class="text-danger"></span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="c_price" class="form-label">Price</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$</span>
+                                    <input asp-for="c_price" type="number" step="0.01" class="form-control">
+                                </div>
+                                <span asp-validation-for="c_price" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label asp-for="c_stock" class="form-label">Stock Quantity</label>
+                                <input asp-for="c_stock" type="number" class="form-control">
+                                <span asp-validation-for="c_stock" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-warning">
+                            <i class="fas fa-save me-2"></i>Update Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,13 +10,11 @@ namespace Repository
 
         public UserRepository(IConfiguration config)
         {
-            var connectionString = config.GetConnectionString("DefaultConnection");
-            conn = new NpgsqlConnection(connectionString);
+            conn = new NpgsqlConnection(config.GetConnectionString("DefaultConnection"));
         }
 
         public UserModel? ValidateUser(string username, string password)
         {
-            UserModel? user = null;
             try
             {
                 conn.Open();
@@ -26,31 +24,31 @@ namespace Repository
                 {
                     cmd.Parameters.AddWithValue("@username", username);
                     cmd.Parameters.AddWithValue("@password", password);
-                    
-                    var reader = cmd.ExecuteReader();
-                    if (reader.Read())
+
+                    using (var reader = cmd.ExecuteReader())
                     {
-                        user = new UserModel
+                        if (reader.Read())
                         {
-                            c_id = reader.GetInt32("c_id"),
-                            c_username = reader.GetString("c_username"),
-                            c_email = reader.GetString("c_email"),
-                            c_role = reader.GetString("c_role"),
-                            c_created_at = reader.GetDateTime("c_created_at")
-                        };
+                            return new UserModel
+                            {
+                                c_id = Convert.ToInt32(reader["c_id"]),
+                                c_username = reader["c_username"].ToString(),
+                                c_role = reader["c_role"].ToString()
+                            };
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in ValidateUser: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
             finally
             {
                 if (conn.State == ConnectionState.Open)
                     conn.Close();
             }
-            return user;
+            return null;
         }
 
         public bool RegisterUser(UserModel user)
@@ -58,22 +56,21 @@ namespace Repository
             try
             {
                 conn.Open();
-                var query = "INSERT INTO t_users (c_username, c_email, c_password, c_role) VALUES (@username, @email, @password, @role)";
+                var query = "INSERT INTO t_users (c_username, c_password, c_role) VALUES (@username, @password, @role)";
 
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@username", user.c_username);
-                    cmd.Parameters.AddWithValue("@email", user.c_email);
                     cmd.Parameters.AddWithValue("@password", user.c_password);
                     cmd.Parameters.AddWithValue("@role", user.c_role);
 
-                    cmd.ExecuteNonQuery();
-                    return true;
+                    int result = cmd.ExecuteNonQuery();
+                    return result > 0;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error in RegisterUser: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
                 return false;
             }
             finally
@@ -81,131 +78,6 @@ namespace Repository
                 if (conn.State == ConnectionState.Open)
                     conn.Close();
             }
-        }
-
-        public bool IsUsernameExists(string username)
-        {
-            try
-            {
-                conn.Open();
-                var query = "SELECT COUNT(*) FROM t_users WHERE c_username = @username";
-
-                using (var cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    var count = Convert.ToInt32(cmd.ExecuteScalar());
-                    return count > 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in IsUsernameExists: {ex.Message}");
-                return true; // Safe default
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                    conn.Close();
-            }
-        }
-
-        public bool IsEmailExists(string email)
-        {
-            try
-            {
-                conn.Open();
-                var query = "SELECT COUNT(*) FROM t_users WHERE c_email = @email";
-
-                using (var cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@email", email);
-                    var count = Convert.ToInt32(cmd.ExecuteScalar());
-                    return count > 0;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in IsEmailExists: {ex.Message}");
-                return true; // Safe default
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                    conn.Close();
-            }
-        }
-
-        public UserModel? GetUserById(int id)
-        {
-            UserModel? user = null;
-            try
-            {
-                conn.Open();
-                var query = "SELECT * FROM t_users WHERE c_id = @id";
-
-                using (var cmd = new NpgsqlCommand(query, conn))
-                {
-                    cmd.Parameters.AddWithValue("@id", id);
-                    var reader = cmd.ExecuteReader();
-                    if (reader.Read())
-                    {
-                        user = new UserModel
-                        {
-                            c_id = reader.GetInt32("c_id"),
-                            c_username = reader.GetString("c_username"),
-                            c_email = reader.GetString("c_email"),
-                            c_role = reader.GetString("c_role"),
-                            c_created_at = reader.GetDateTime("c_created_at")
-                        };
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in GetUserById: {ex.Message}");
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                    conn.Close();
-            }
-            return user;
-        }
-
-        public List<UserModel> GetAllUsers()
-        {
-            List<UserModel> users = new List<UserModel>();
-            try
-            {
-                conn.Open();
-                var query = "SELECT * FROM t_users ORDER BY c_created_at DESC";
-
-                using (var cmd = new NpgsqlCommand(query, conn))
-                {
-                    var reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        users.Add(new UserModel
-                        {
-                            c_id = reader.GetInt32("c_id"),
-                            c_username = reader.GetString("c_username"),
-                            c_email = reader.GetString("c_email"),
-                            c_role = reader.GetString("c_role"),
-                            c_created_at = reader.GetDateTime("c_created_at")
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error in GetAllUsers: {ex.Message}");
-            }
-            finally
-            {
-                if (conn.State == ConnectionState.Open)
-                    conn.Close();
-            }
-            return users;
         }
     }
 }

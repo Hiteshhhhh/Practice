@@ -1,160 +1,42 @@
 @* filepath: Views/User/Login.cshtml *@
-@{
-    ViewData["Title"] = "Login";
-    Layout = "_Layout";
-}
-
+@model UserModel
+@using Models
 <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4">
-        <div class="card shadow-lg">
-            <!-- Card Header with Title -->
-            <div class="card-header bg-primary text-white text-center py-3">
-                <h4><i class="fas fa-sign-in-alt me-2"></i>Login to Your Account</h4>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0"><i class="fas fa-sign-in-alt me-2"></i>Login</h4>
             </div>
-            
-            <div class="card-body p-4">
-                <!-- Login Form -->
+            <div class="card-body">
                 <form asp-action="Login" method="post">
-                    <!-- Username Field -->
                     <div class="mb-3">
-                        <label for="username" class="form-label">
-                            <i class="fas fa-user text-primary me-1"></i> Username
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="fas fa-user"></i>
-                            </span>
-                            <input type="text" 
-                                   class="form-control" 
-                                   id="username" 
-                                   name="username" 
-                                   placeholder="Enter your username"
-                                   required
-                                   autocomplete="username">
-                        </div>
+                        <label asp-for="c_username" class="form-label">Username</label>
+                        <input asp-for="c_username" class="form-control" placeholder="Enter username">
+                        <span asp-validation-for="c_username" class="text-danger"></span>
                     </div>
 
-                    <!-- Password Field -->
                     <div class="mb-3">
-                        <label for="password" class="form-label">
-                            <i class="fas fa-lock text-primary me-1"></i> Password
-                        </label>
-                        <div class="input-group">
-                            <span class="input-group-text">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                            <input type="password" 
-                                   class="form-control" 
-                                   id="password" 
-                                   name="password" 
-                                   placeholder="Enter your password"
-                                   required
-                                   autocomplete="current-password">
-                            <!-- Show/Hide Password Button -->
-                            <button class="btn btn-outline-secondary" 
-                                    type="button" 
-                                    onclick="togglePassword()">
-                                <i class="fas fa-eye" id="eyeIcon"></i>
-                            </button>
-                        </div>
+                        <label asp-for="c_password" class="form-label">Password</label>
+                        <input asp-for="c_password" type="password" class="form-control" placeholder="Enter password">
+                        <span asp-validation-for="c_password" class="text-danger"></span>
                     </div>
 
-                    <!-- Remember Me Checkbox -->
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">
-                            Remember me
-                        </label>
-                    </div>
-
-                    <!-- Login Button -->
-                    <div class="d-grid mb-3">
-                        <button type="submit" class="btn btn-primary btn-lg">
-                            <i class="fas fa-sign-in-alt me-2"></i>Login
-                        </button>
-                    </div>
+                    <button type="submit" class="btn btn-primary w-100">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login
+                    </button>
                 </form>
 
-                <!-- Divider -->
-                <hr class="my-4">
-
-                <!-- Register Link -->
-                <div class="text-center">
-                    <p class="mb-2">Don't have an account?</p>
-                    <a asp-action="Register" class="btn btn-outline-success">
-                        <i class="fas fa-user-plus me-2"></i>Create New Account
-                    </a>
+                <div class="text-center mt-3">
+                    <a asp-action="Register" class="btn btn-link">Don't have an account? Register</a>
                 </div>
 
-                <!-- Demo Accounts Section -->
+                <!-- Test Accounts -->
                 <div class="mt-4 p-3 bg-light rounded">
-                    <h6 class="text-muted mb-2">
-                        <i class="fas fa-info-circle me-1"></i>Demo Accounts
-                    </h6>
-                    <small class="text-muted">
-                        <div class="row">
-                            <div class="col-12 mb-1">
-                                <strong class="text-danger">Admin:</strong> 
-                                <code>admin</code> / <code>admin123</code>
-                            </div>
-                            <div class="col-12 mb-1">
-                                <strong class="text-warning">Manager:</strong> 
-                                <code>manager1</code> / <code>manager123</code>
-                            </div>
-                            <div class="col-12">
-                                <strong class="text-info">User:</strong> 
-                                <code>user1</code> / <code>user123</code>
-                            </div>
-                        </div>
-                    </small>
+                    <h6>Test Accounts:</h6>
+                    <p class="mb-1"><strong>Admin:</strong> admin / admin123</p>
+                    <p class="mb-0"><strong>User:</strong> user / user123</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- JavaScript for Show/Hide Password -->
-<script>
-    function togglePassword() {
-        const passwordField = document.getElementById('password');
-        const eyeIcon = document.getElementById('eyeIcon');
-        
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            eyeIcon.className = 'fas fa-eye-slash';
-        } else {
-            passwordField.type = 'password';
-            eyeIcon.className = 'fas fa-eye';
-        }
-    }
-
-    // Auto-focus on username field when page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('username').focus();
-    });
-</script>
-
-<style>
-    .card {
-        border: none;
-        border-radius: 15px;
-    }
-    
-    .card-header {
-        border-radius: 15px 15px 0 0 !important;
-    }
-    
-    .input-group-text {
-        background-color: #f8f9fa;
-        border-right: none;
-    }
-    
-    .form-control {
-        border-left: none;
-    }
-    
-    .form-control:focus {
-        border-color: #0d6efd;
-        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-    }
-</style>
