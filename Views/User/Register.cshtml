@@ -1,0 +1,264 @@
+@* filepath: Views/User/Register.cshtml *@
+@using Models
+@model UserModel
+
+@{
+    ViewData["Title"] = "Register";
+    Layout = "_Layout";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow-lg">
+            <!-- Card Header -->
+            <div class="card-header bg-success text-white text-center py-3">
+                <h4><i class="fas fa-user-plus me-2"></i>Create New Account</h4>
+                <small>Join our Product Management System</small>
+            </div>
+            
+            <div class="card-body p-4">
+                <!-- Registration Form -->
+                <form asp-action="Register" method="post" novalidate>
+                    
+                    <!-- Username Field -->
+                    <div class="mb-3">
+                        <label asp-for="c_username" class="form-label">
+                            <i class="fas fa-user text-success me-1"></i> Username *
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <input asp-for="c_username" 
+                                   class="form-control" 
+                                   placeholder="Choose a unique username"
+                                   autocomplete="username">
+                        </div>
+                        <span asp-validation-for="c_username" class="text-danger small"></span>
+                        <small class="form-text text-muted">Must be unique, 3-50 characters</small>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="mb-3">
+                        <label asp-for="c_email" class="form-label">
+                            <i class="fas fa-envelope text-success me-1"></i> Email Address *
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <input asp-for="c_email" 
+                                   type="email"
+                                   class="form-control" 
+                                   placeholder="Enter your email address"
+                                   autocomplete="email">
+                        </div>
+                        <span asp-validation-for="c_email" class="text-danger small"></span>
+                        <small class="form-text text-muted">We'll never share your email</small>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="mb-3">
+                        <label asp-for="c_password" class="form-label">
+                            <i class="fas fa-lock text-success me-1"></i> Password *
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input asp-for="c_password" 
+                                   type="password"
+                                   class="form-control" 
+                                   id="password"
+                                   placeholder="Create a strong password"
+                                   autocomplete="new-password">
+                            <button class="btn btn-outline-secondary" 
+                                    type="button" 
+                                    onclick="togglePassword('password', 'eyeIcon1')">
+                                <i class="fas fa-eye" id="eyeIcon1"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="c_password" class="text-danger small"></span>
+                        <small class="form-text text-muted">Minimum 6 characters</small>
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div class="mb-3">
+                        <label asp-for="ConfirmPassword" class="form-label">
+                            <i class="fas fa-lock text-success me-1"></i> Confirm Password *
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <input asp-for="ConfirmPassword" 
+                                   type="password"
+                                   class="form-control" 
+                                   id="confirmPassword"
+                                   placeholder="Repeat your password"
+                                   autocomplete="new-password">
+                            <button class="btn btn-outline-secondary" 
+                                    type="button" 
+                                    onclick="togglePassword('confirmPassword', 'eyeIcon2')">
+                                <i class="fas fa-eye" id="eyeIcon2"></i>
+                            </button>
+                        </div>
+                        <span asp-validation-for="ConfirmPassword" class="text-danger small"></span>
+                    </div>
+
+                    <!-- Role Selection -->
+                    <div class="mb-3">
+                        <label asp-for="c_role" class="form-label">
+                            <i class="fas fa-user-tag text-success me-1"></i> Account Type
+                        </label>
+                        <select asp-for="c_role" class="form-select">
+                            <option value="User" selected>Regular User</option>
+                            <option value="Manager">Manager</option>
+                        </select>
+                        <small class="form-text text-muted">
+                            <i class="fas fa-info-circle"></i> 
+                            Admin access requires approval from existing admin
+                        </small>
+                    </div>
+
+                    <!-- Terms and Conditions -->
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                        <label class="form-check-label" for="termsCheck">
+                            I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> 
+                            and <a href="#" class="text-decoration-none">Privacy Policy</a> *
+                        </label>
+                    </div>
+
+                    <!-- Register Button -->
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="fas fa-user-plus me-2"></i>Create Account
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Divider -->
+                <hr class="my-4">
+
+                <!-- Login Link -->
+                <div class="text-center">
+                    <p class="mb-2">Already have an account?</p>
+                    <a asp-action="Login" class="btn btn-outline-primary">
+                        <i class="fas fa-sign-in-alt me-2"></i>Login Here
+                    </a>
+                </div>
+
+                <!-- Password Strength Indicator -->
+                <div class="mt-3">
+                    <small class="text-muted">
+                        <strong>Password Requirements:</strong>
+                        <ul class="small mt-2">
+                            <li id="length" class="text-danger">
+                                <i class="fas fa-times"></i> At least 6 characters
+                            </li>
+                            <li id="match" class="text-danger">
+                                <i class="fas fa-times"></i> Passwords match
+                            </li>
+                        </ul>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Client-side Validation Script -->
+<script>
+    // Toggle password visibility
+    function togglePassword(fieldId, iconId) {
+        const passwordField = document.getElementById(fieldId);
+        const eyeIcon = document.getElementById(iconId);
+        
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            eyeIcon.className = 'fas fa-eye-slash';
+        } else {
+            passwordField.type = 'password';
+            eyeIcon.className = 'fas fa-eye';
+        }
+    }
+
+    // Password validation
+    document.addEventListener('DOMContentLoaded', function() {
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const lengthCheck = document.getElementById('length');
+        const matchCheck = document.getElementById('match');
+
+        function validatePassword() {
+            // Check length
+            if (password.value.length >= 6) {
+                lengthCheck.className = 'text-success';
+                lengthCheck.innerHTML = '<i class="fas fa-check"></i> At least 6 characters';
+            } else {
+                lengthCheck.className = 'text-danger';
+                lengthCheck.innerHTML = '<i class="fas fa-times"></i> At least 6 characters';
+            }
+
+            // Check match
+            if (password.value === confirmPassword.value && password.value !== '') {
+                matchCheck.className = 'text-success';
+                matchCheck.innerHTML = '<i class="fas fa-check"></i> Passwords match';
+            } else {
+                matchCheck.className = 'text-danger';
+                matchCheck.innerHTML = '<i class="fas fa-times"></i> Passwords match';
+            }
+        }
+
+        password.addEventListener('input', validatePassword);
+        confirmPassword.addEventListener('input', validatePassword);
+
+        // Auto-focus username field
+        document.querySelector('input[name="c_username"]').focus();
+    });
+
+    // Form submission validation
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const termsCheck = document.getElementById('termsCheck');
+        if (!termsCheck.checked) {
+            e.preventDefault();
+            alert('Please accept the Terms of Service and Privacy Policy to continue.');
+            termsCheck.focus();
+        }
+    });
+</script>
+
+<style>
+    .card {
+        border: none;
+        border-radius: 15px;
+    }
+    
+    .card-header {
+        border-radius: 15px 15px 0 0 !important;
+    }
+    
+    .input-group-text {
+        background-color: #f8f9fa;
+        border-right: none;
+    }
+    
+    .form-control {
+        border-left: none;
+    }
+    
+    .form-control:focus {
+        border-color: #198754;
+        box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+    }
+    
+    .form-select:focus {
+        border-color: #198754;
+        box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+    }
+    
+    .text-danger i, .text-success i {
+        width: 12px;
+    }
+</style>

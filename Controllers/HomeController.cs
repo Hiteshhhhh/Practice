@@ -15,30 +15,12 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        Student student = new Student()
-        {
-            roll = 1,
-            age = 24,
-            gender = "Male",
-            fee = 35000,
-            Name = "Hitesh Mishra",
-        };
-        return View(student);
+        return View();
     }
     public IActionResult About()
     {
         return View();
     }
-    public IActionResult ShowStudent()
-    {
-        ViewBag.id = Request.Form["id"];
-        ViewBag.name = Request.Form["name"];
-        ViewBag.age = Request.Form["age"];
-        ViewBag.gender = Request.Form["gender"];
-        ViewBag.fee = Request.Form["fee"];
-        return View();
-    }
-
     public IActionResult Privacy()
     {
         return View();
