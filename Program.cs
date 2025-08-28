@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services
 builder.Services.AddControllersWithViews();
 
-// Add session support
+// Add session support new
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -13,13 +13,13 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-// Register repositories
+// Register repositories new
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 var app = builder.Build();
 
-// Configure pipeline
+// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -29,10 +29,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
-app.UseSession(); // Important: Add session middleware
+app.UseSession(); // Important: Add session middleware new 
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=User}/{action=Login}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

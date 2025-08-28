@@ -8,6 +8,7 @@ namespace Controllers
     {
         private readonly IUserRepository _userRepository;
 
+        //Constructor
         public UserController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
@@ -89,3 +90,4 @@ namespace Controllers
         }
     }
 }
+
